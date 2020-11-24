@@ -1,0 +1,166 @@
+\documentclass[a4paper]{article}
+% Kodowanie latain 2
+%\usepackage[latin2]{inputenc}
+\usepackage[T1]{fontenc}
+% Można też użyć UTF-8
+\usepackage[utf8]{inputenc}
+
+% Język
+\usepackage[polish]{babel}
+% \usepackage[english]{babel}
+
+% Rózne przydatne paczki:
+% - znaczki matematyczne
+\usepackage{amsmath, amsfonts}
+% - wcięcie na początku pierwszego akapitu
+\usepackage{indentfirst}
+% - komenda \url 
+\usepackage{hyperref}
+% - dołączanie obrazków
+\usepackage{graphics}
+% - szersza strona
+\usepackage[nofoot,hdivide={2cm,*,2cm},vdivide={2cm,*,2cm}]{geometry}
+\frenchspacing
+% - brak numerów stron
+\pagestyle{empty}
+
+% dane autora
+\author{Martyna Sowa}
+\title{Sprawdzian PWI}
+\date{\today}
+
+% początek dokumentu
+\begin{document}
+\section{Zadanie 1}
+${\rho \frac{D\textbf{u}}{Dt} = \rho(\frac{\partial\textbf{u}}{\partial t } + \textbf{u} \cdot \bigtriangledown \textbf{u}) = - \bigtriangledown \overline{p} + \bigtriangledown \cdot \{ \mu (\bigtriangledown \textbf{u} + (\bigtriangledown \textbf{u} )^T - \frac{2}{3} (\bigtriangledown \cdot \textbf{u})\textbf{I} ) \} + \rho \textbf{g} }$
+
+\bigskip
+
+${\tilde{f}(\xi)=\int_{-\infty}^{\infty} f(x) e^{-2 \pi i x \xi} dx}$
+
+\bigskip
+
+${\mathbb{P} (\hat{X}_n - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} \leq \mathbb{E}X \leq \hat{X}_n + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}) \approx 1 - \alpha }$
+
+\bigskip
+
+${
+\begin{bmatrix}
+1 & 2 \\
+3 & 4
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+0 & 5 \\
+6 & 7
+\end{bmatrix}
+=
+\begin{bmatrix}
+1
+\begin{bmatrix}
+0 & 5 \\
+6 & 7
+\end{bmatrix}
+&
+2
+\begin{bmatrix}
+0 & 5 \\
+6 & 7
+\end{bmatrix}
+\\
+3
+\begin{bmatrix}
+0 & 5 \\
+6 & 7
+\end{bmatrix}
+& 
+4
+\begin{bmatrix}
+0 & 5 \\
+6 & 7
+\end{bmatrix}
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 & 5 & 0 & 10 \\
+6 & 7 & 12 & 14 \\
+0 & 15 & 0 & 20 \\
+18 & 21 & 24 & 28
+\end{bmatrix}
+}$
+
+\section{Zadanie 2}
+1. ssh-keygen
+
+2. ssh-copy-id -i klucz\_do\_serwera.pub s324251@pwi.ii.uni.wroc.pl
+
+3.
+
+echo ''\# PWI-sprawdzian-s324'' >> README.md
+
+git init
+
+git add README.md
+
+cp ../klucz\_do\_repozytorium.pub .
+
+git add klucz\_do\_repozytorium.pub
+
+git commit -m "first commit"
+
+git branch -M main
+
+git remote add origin https://github.com/martiesova/PWI-sprawdzian-s324.git
+
+git push -u origin main
+
+4.
+
+nano ~/.ssh/config
+
+Zawartość pliku:
+
+Host pwi-sprawdzian
+
+\quad User s324251
+        
+\quad HostName pwi.ii.uni.wroc.pl
+
+5. Nie rozumiem zadania
+
+\section{Zadanie 3}
+1. git clone https://github.com/martiesova/PWI-sprawdzian-s324
+
+Nie wiem dlaczego rozwiązanie z generowaniem klucza jest brzydkie. Nie potrzebowałam też generować klucza na serwerze i nie wiem dlaczego miało by to być konieczne.
+
+2.
+
+wget http://www.ii.uni.wroc.pl/~lisu/zadanie.tar.gz
+
+tar -xf ./zadanie.tar.gz
+
+git add zadanie/*
+
+git commit
+
+3.
+
+echo -n s324251 | md5sum
+
+Nie udało mi się znaleźć folderu o nazwie odpowiadającej wynikowi
+
+4.
+
+scp sprawdzian.tex  s324251@pwi.ii.uni.wroc.pl:~/PWI-sprawdzian-s324
+
+scp sprawdzian.pdf  s324251@pwi.ii.uni.wroc.pl:~/PWI-sprawdzian-s324
+
+git add sprawdzian.tex
+
+git add sprawdzian.pdf
+
+git commit
+
+git push origin master
+
+\end{document}
